@@ -8,7 +8,7 @@ const router = require("./router.js");
 const { addUser, removeUser, getUser, getUsersInRoom } = require("./users");
 const cors = require("cors");
 
-const PORT = process.send.PORT || 3001;
+const PORT = process.env.PORT || 3001;
 
 server.listen(PORT, () => {
   console.log("listening on Port " + PORT);
