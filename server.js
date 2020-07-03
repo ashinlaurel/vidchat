@@ -6,7 +6,6 @@ const server = http.createServer(app);
 const io = socketio(server);
 const router = require("./router.js");
 const { addUser, removeUser, getUser, getUsersInRoom } = require("./users");
-const cors = require("cors");
 
 const PORT = process.env.PORT || 3001;
 
@@ -15,7 +14,6 @@ server.listen(PORT, () => {
 });
 
 app.use(router);
-app.use(cors());
 
 io.on("connection", (socket) => {
   console.log("client " + socket.id + " is connected");
