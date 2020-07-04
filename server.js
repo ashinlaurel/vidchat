@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const http = require("http");
 const socketio = require("socket.io");
+const { ExpressPeerServer } = require("peer");
 const server = http.createServer(app);
 const io = socketio(server);
 const router = require("./router.js");
@@ -14,6 +15,12 @@ server.listen(PORT, () => {
 });
 
 app.use(router);
+
+const peerServer = ExpressPeerServer(server, {
+  path: "/myapp",
+});
+
+app.use("/peerjs", peerServer);
 
 io.on("connection", (socket) => {
   console.log("client " + socket.id + " is connected");
