@@ -12,8 +12,8 @@ const Chat = ({ location }) => {
   const [room, setRoom] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-  // const ENDPOINT = "http://ec2-34-204-95-90.compute-1.amazonaws.com:3001/";
-  const ENDPOINT = "http://localhost:3001";
+  const ENDPOINT = "http://ec2-34-204-95-90.compute-1.amazonaws.com:3001/";
+  // const ENDPOINT = "http://localhost:3001";
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);
     setName(name);
