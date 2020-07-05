@@ -1,10 +1,10 @@
-import React, { useEffect, useState ,useMemo} from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import Peer from "peerjs";
 let randID = Math.random().toString(36).substring(7);
 // console.log("random", r);
-const peer = new Peer(randID,{
-  // host: "localhost",
-  host: "http://ec2-34-204-95-90.compute-1.amazonaws.com",
+const peer = new Peer(randID, {
+  host: "localhost",
+  // host: "http://ec2-34-204-95-90.compute-1.amazonaws.com",
   port: 3001,
   path: "/peerjs/myapp",
 });
@@ -15,7 +15,6 @@ export default function Video() {
   const [lid, setLid] = useState("");
   const [rid, setRid] = useState("");
   const initialise = () => {
-    
     let video = document.getElementById("Lvideo");
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
@@ -53,7 +52,7 @@ export default function Video() {
           call.answer(lstream);
           call.on("stream", (stream) => {
             video.srcObject = stream;
-            
+
             video.play();
           });
         });
@@ -77,22 +76,20 @@ export default function Video() {
       console.log("callee vidoe");
       video.srcObject = stream;
       let width = 320;
-    let height = (video.videoHeight / video.videoWidth) * width;
-    video.setAttribute("width", width);
-    video.setAttribute("height", height);
-      
+      let height = (video.videoHeight / video.videoWidth) * width;
+      video.setAttribute("width", width);
+      video.setAttribute("height", height);
+
       video.play();
     });
   };
   useEffect(() => {
-    
     // console.log(peer);
     initialise();
     setLid(randID);
     peer.on("open", function (id) {
       console.log("My peer ID is: " + id);
-      
-    })
+    });
     Connection();
   }, []);
   // useEffect(() => {
