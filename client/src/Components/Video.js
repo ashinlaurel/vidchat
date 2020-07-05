@@ -3,8 +3,8 @@ import Peer from "peerjs";
 let randID = Math.random().toString(36).substring(7);
 // console.log("random", r);
 const peer = new Peer(randID, {
-  host: "localhost",
-  // host: "http://ec2-34-204-95-90.compute-1.amazonaws.com",
+  // host: "localhost",
+  host: "http://ec2-34-204-95-90.compute-1.amazonaws.com",
   port: 3001,
   path: "/peerjs/myapp",
 });
